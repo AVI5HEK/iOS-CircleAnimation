@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         
         var animations = [CABasicAnimation]()
         
-        circle = Circle(viewController: self)
+        circle = Circle(view: self.view)
         
         if let _circle = circle {
             animations.append(_circle.getPathAnimation(bounds: bounds , endRect: CGRect(x: -radius/2, y: -radius/2, width: radius, height: radius), duration: duration))

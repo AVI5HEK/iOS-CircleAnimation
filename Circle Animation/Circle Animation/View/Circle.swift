@@ -11,18 +11,18 @@ import UIKit
 class Circle {
     let rectShape = CAShapeLayer()
     var bounds = CGRect()
-    var viewController: UIViewController
+    var view: UIView
     
-    init(viewController: UIViewController) {
-        self.viewController = viewController
+    init(view: UIView) {
+        self.view = view
     }
     
     func create(bounds: CGRect) -> Circle {
         self.bounds = bounds
         rectShape.bounds = bounds
-        rectShape.position = viewController.view.center
+        rectShape.position = view.center
         rectShape.cornerRadius = bounds.width / 2
-        viewController.view.layer.addSublayer(rectShape)
+        view.layer.addSublayer(rectShape)
         
         return self
     }
@@ -37,7 +37,7 @@ class Circle {
     }
     
     func animate(endShape endRect: CGRect, duration: CFTimeInterval) {
-        let radius = CGFloat(sqrt(pow(Float(viewController.view.frame.width), 2) + pow(Float(viewController.view.frame.height), 2)))
+        let radius = CGFloat(sqrt(pow(Float(view.frame.width), 2) + pow(Float(view.frame.height), 2)))
         var animations = [CABasicAnimation]()
         animations.append(getPathAnimation(bounds: bounds , endRect: CGRect(x: -radius/2, y: -radius/2, width: radius, height: radius), duration: duration))
         
